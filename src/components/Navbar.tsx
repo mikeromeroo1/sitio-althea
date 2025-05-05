@@ -17,8 +17,9 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <a href="/" className="flex items-center">
               <span className="text-2xl font-bold text-althea-600">Althea</span>
-              <span className="text-2xl font-light text-teal-500 ml-1">Med</span>
+              <span className="text-2xl font-light text-teal-500 ml-1">Lease</span>
             </a>
+            <span className="ml-3 text-sm text-gray-500 hidden md:block">Tu aliado financiero en el mundo médico</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -29,19 +30,18 @@ const Navbar: React.FC = () => {
             <a href="#nosotros" className="text-althea-800 hover:text-althea-600 font-medium transition-colors">
               Nosotros
             </a>
-            <a href="#equipos" className="text-althea-800 hover:text-althea-600 font-medium transition-colors">
-              Equipos
+            <a href="#beneficios" className="text-althea-800 hover:text-althea-600 font-medium transition-colors">
+              Beneficios
             </a>
-            <a href="#servicios" className="text-althea-800 hover:text-althea-600 font-medium transition-colors">
-              Servicios
+            <a href="#requisitos" className="text-althea-800 hover:text-althea-600 font-medium transition-colors">
+              Requisitos
             </a>
-            <a href="#contacto" className="text-althea-800 hover:text-althea-600 font-medium transition-colors">
-              Contacto
+            <a href="#faqs" className="text-althea-800 hover:text-althea-600 font-medium transition-colors">
+              FAQs
             </a>
-          </div>
-
-          <div className="hidden md:block">
-            <Button className="btn-primary">Solicitar Cotización</Button>
+            <a href="#solicitud">
+              <Button className="btn-primary">Solicita tu Cotización</Button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -63,17 +63,19 @@ const Navbar: React.FC = () => {
             <a href="#nosotros" className="block px-3 py-2 text-althea-800 font-medium hover:bg-althea-50 rounded-md">
               Nosotros
             </a>
-            <a href="#equipos" className="block px-3 py-2 text-althea-800 font-medium hover:bg-althea-50 rounded-md">
-              Equipos
+            <a href="#beneficios" className="block px-3 py-2 text-althea-800 font-medium hover:bg-althea-50 rounded-md">
+              Beneficios
             </a>
-            <a href="#servicios" className="block px-3 py-2 text-althea-800 font-medium hover:bg-althea-50 rounded-md">
-              Servicios
+            <a href="#requisitos" className="block px-3 py-2 text-althea-800 font-medium hover:bg-althea-50 rounded-md">
+              Requisitos
             </a>
-            <a href="#contacto" className="block px-3 py-2 text-althea-800 font-medium hover:bg-althea-50 rounded-md">
-              Contacto
+            <a href="#faqs" className="block px-3 py-2 text-althea-800 font-medium hover:bg-althea-50 rounded-md">
+              FAQs
             </a>
             <div className="px-3 py-2">
-              <Button className="w-full btn-primary">Solicitar Cotización</Button>
+              <a href="#solicitud" className="block w-full">
+                <Button className="w-full btn-primary">Solicita tu Cotización</Button>
+              </a>
             </div>
           </div>
         </div>

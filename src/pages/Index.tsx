@@ -3,9 +3,10 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import AboutUs from '../components/AboutUs';
-import EquipmentCategories from '../components/EquipmentCategories';
-import Services from '../components/Services';
-import Contact from '../components/Contact';
+import Benefits from '../components/Benefits';
+import Requirements from '../components/Requirements';
+import Faqs from '../components/Faqs';
+import QuoteForm from '../components/QuoteForm';
 import Footer from '../components/Footer';
 
 const Index = () => {
@@ -14,9 +15,10 @@ const Index = () => {
       <Navbar />
       <Hero />
       <AboutUs />
-      <EquipmentCategories />
-      <Services />
-      <Contact />
+      <Benefits />
+      <Requirements />
+      <Faqs />
+      <QuoteForm />
       <Footer />
     </div>
   );

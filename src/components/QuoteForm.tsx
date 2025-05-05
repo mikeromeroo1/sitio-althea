@@ -2,28 +2,24 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const QuoteForm: React.FC = () => {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // This would typically handle form submission
-    alert('Solicitud de cotización enviada. ¡Gracias por tu interés!');
-  };
-
   return (
     <section id="solicitud" className="bg-althea-50 py-16">
       <div className="section-container">
-        <div className="text-center mb-10">
+        <div className="text-center mb-10 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Solicita tu cotización</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Completa el formulario y recibe una cotización personalizada para tu equipo médico.
           </p>
         </div>
         
-        <div className="max-w-3xl mx-auto">
-          <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
+        <div className="max-w-3xl mx-auto animate-slide-in">
+          <div className="bg-white p-8 rounded-lg shadow-md">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
                 <label htmlFor="marca" className="block text-sm font-medium text-gray-700 mb-1">
                   Marca
                 </label>
@@ -31,11 +27,10 @@ const QuoteForm: React.FC = () => {
                   id="marca"
                   type="text" 
                   placeholder="Ej. Phillips, Siemens..." 
-                  required 
                   className="w-full"
                 />
               </div>
-              <div>
+              <div className="space-y-2">
                 <label htmlFor="precio" className="block text-sm font-medium text-gray-700 mb-1">
                   Precio del equipo
                 </label>
@@ -43,18 +38,20 @@ const QuoteForm: React.FC = () => {
                   id="precio"
                   type="number" 
                   placeholder="MXN" 
-                  required 
                   className="w-full"
                   min="1000"
                 />
               </div>
-              <div className="flex items-end">
-                <Button type="submit" className="btn-primary w-full">
-                  Cotiza tu equipo
-                </Button>
+              <div className="md:col-span-2 mt-4">
+                <Link to="/cotizacion">
+                  <Button className="bg-althea-500 hover:bg-althea-600 text-white font-medium w-full transition-all duration-300 group">
+                    Solicitar cotización completa
+                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </section>

@@ -46,14 +46,19 @@ const Faqs: React.FC = () => {
   return (
     <section id="faqs" className="bg-white py-16">
       <div className="section-container">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Preguntas Frecuentes</h2>
         </div>
         
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto animate-fade-in">
           <Accordion type="single" collapsible className="w-full">
             {faqItems.map((item, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
+              <AccordionItem 
+                key={index} 
+                value={`item-${index}`}
+                className="animate-slide-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 <AccordionTrigger className="text-left text-lg font-medium text-althea-800">
                   {item.question}
                 </AccordionTrigger>

@@ -8,7 +8,7 @@ const AboutUs: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-semibold text-primary mb-4">Sobre Nosotros</h2>
         </div>
         
-        <div className="bg-primary/10 rounded-2xl p-8 lg:p-12 shadow-md animate-slide-in">
+        <div className="bg-slate-100 rounded-2xl p-8 lg:p-12 shadow-md animate-slide-in">
           <div className="flex flex-col md:flex-row items-center">
             <div className="w-full md:w-3/5 mb-8 md:mb-0 md:pr-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               <p className="text-gray-700 text-lg">

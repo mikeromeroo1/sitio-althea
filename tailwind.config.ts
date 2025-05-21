@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -26,11 +25,11 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
+					DEFAULT: 'hsl(187, 55%, 42%)',
 					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
+					DEFAULT: 'hsl(142, 60%, 45%)',
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
 				destructive: {
@@ -42,7 +41,7 @@ export default {
 					foreground: 'hsl(var(--muted-foreground))'
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
+					DEFAULT: 'hsl(250, 50%, 55%)',
 					foreground: 'hsl(var(--accent-foreground))'
 				},
 				popover: {
@@ -53,30 +52,29 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Updated with the provided color palette
 				althea: {
-					50: '#E6F4F7',
-					100: '#C4E4EA',
-					200: '#A2D4DD',
-					300: '#80C3D0',
-					400: '#5EB3C3',
-					500: '#308898', // Primary teal color #308898
-					600: '#266E7A',
-					700: '#1D535C',
-					800: '#13393F',
-					900: '#0A1E21',
+					50: 'hsl(187, 55%, 95%)',
+					100: 'hsl(187, 55%, 90%)',
+					200: 'hsl(187, 55%, 80%)',
+					300: 'hsl(187, 55%, 70%)',
+					400: 'hsl(187, 55%, 60%)',
+					500: 'hsl(187, 55%, 42%)',
+					600: 'hsl(187, 55%, 35%)',
+					700: 'hsl(187, 55%, 28%)',
+					800: 'hsl(187, 55%, 21%)',
+					900: 'hsl(187, 55%, 14%)',
 				},
 				green: {
-					50: '#F2F7E6',
-					100: '#E5EFCD',
-					200: '#D2E3AB',
-					300: '#BFD78A',
-					400: '#ACCB69',
-					500: '#88AD46', // Primary green color #88AD46
-					600: '#6D8A38',
-					700: '#52682A',
-					800: '#36451C',
-					900: '#1B230E',
+					50: 'hsl(142, 60%, 95%)',
+					100: 'hsl(142, 60%, 90%)',
+					200: 'hsl(142, 60%, 80%)',
+					300: 'hsl(142, 60%, 70%)',
+					400: 'hsl(142, 60%, 60%)',
+					500: 'hsl(142, 60%, 45%)',
+					600: 'hsl(142, 60%, 38%)',
+					700: 'hsl(142, 60%, 31%)',
+					800: 'hsl(142, 60%, 24%)',
+					900: 'hsl(142, 60%, 17%)',
 				},
 				gray: {
 					50: '#F7F7F7',
@@ -84,7 +82,7 @@ export default {
 					200: '#D6D6D6',
 					300: '#C2C2C2',
 					400: '#ADADAD',
-					500: '#9D9D9D', // Primary gray color #9D9D9D
+					500: '#9D9D9D',
 					600: '#7E7E7E',
 					700: '#5E5E5E',
 					800: '#3F3F3F',
@@ -158,6 +156,10 @@ export default {
 					'50%': {
 						opacity: '0.7'
 					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-6px)' },
 				}
 			},
 			animation: {
@@ -166,7 +168,8 @@ export default {
 				'fade-in': 'fade-in 0.7s ease-out',
 				'slide-in': 'slide-in 0.5s ease-out',
 				'bounce': 'bounce 2s ease-in-out infinite',
-				'pulse': 'pulse 2s ease-in-out infinite'
+				'pulse': 'pulse 2s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite',
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],

@@ -46,6 +46,13 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
+  html, body, #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
   * {
     @apply border-border;
   }
@@ -53,6 +60,7 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden; /* prevent horizontal scroll */
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -63,7 +71,7 @@
 @layer components {
   .hero-section {
     @apply relative overflow-hidden;
-    background: linear-gradient(135deg, hsl(187, 55%, 42%) 0%, hsl(250, 50%, 55%) 100%);
+    background: radial-gradient(ellipse at 50% 100%, hsl(var(--accent)) 0%, hsl(var(--primary)) 40%, hsl(var(--background)) 85%);
   }
   
   .btn-primary {
@@ -71,7 +79,7 @@
   }
   
   .btn-secondary {
-    @apply bg-secondary hover:bg-secondary/90 text-white font-medium py-2 px-6 rounded-md transition-colors;
+    @apply bg-secondary hover:bg-secondary/90 text-white font-medium py-2 px-6 rounded-md transition-colors shadow-md hover:shadow-lg;
   }
   
   .section-container {

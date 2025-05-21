@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 
 const QuoteForm: React.FC = () => {
   return (
-    <section id="solicitud" className="bg-primary/10 py-16">
+    <section id="solicitud" className="bg-slate-100 py-16">
       <div className="section-container">
         <div className="text-center mb-10 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-semibold text-primary mb-4">Solicita tu cotización</h2>

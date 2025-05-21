@@ -9,10 +9,10 @@ const Hero: React.FC = () => {
       <div className="section-container w-full flex flex-col md:flex-row items-center h-full">
         <div className="w-full md:w-2/5 md:pr-8 lg:pl-12 text-center md:text-left z-10 animate-fade-in">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 animate-fade-in">
-          Arrendamiento Simple de Equipo Médico
+          Arrendamiento 100% deducible de equipo médico
           </h1>
           <p className="text-base md:text-lg mb-8 text-foreground/80 animate-slide-in">
-          Soluciones a medida, rápidas y confiables para profesionales de la salud.
+          Arrendamiento accesible con marcas líderes y tasas competitivas.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <Link to="/cotizacion">

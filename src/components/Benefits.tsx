@@ -10,7 +10,7 @@ const Benefits: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-md card-hover">
+          <div className="bg-white p-6 rounded-lg shadow-md card-hover flex flex-col items-center text-center">
             <div className="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center mb-4">
               <Clock className="w-7 h-7 text-primary" />
             </div>
@@ -20,7 +20,7 @@ const Benefits: React.FC = () => {
             </p>
           </div>
           
-          <div className="bg-white p-6 rounded-lg shadow-md card-hover">
+          <div className="bg-white p-6 rounded-lg shadow-md card-hover flex flex-col items-center text-center">
             <div className="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center mb-4">
               <Percent className="w-7 h-7 text-primary" />
             </div>
@@ -30,7 +30,7 @@ const Benefits: React.FC = () => {
             </p>
           </div>
           
-          <div className="bg-white p-6 rounded-lg shadow-md card-hover">
+          <div className="bg-white p-6 rounded-lg shadow-md card-hover flex flex-col items-center text-center">
             <div className="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center mb-4">
               <UserPlus className="w-7 h-7 text-primary" />
             </div>
@@ -40,7 +40,7 @@ const Benefits: React.FC = () => {
             </p>
           </div>
           
-          <div className="bg-white p-6 rounded-lg shadow-md card-hover">
+          <div className="bg-white p-6 rounded-lg shadow-md card-hover flex flex-col items-center text-center">
             <div className="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center mb-4">
               <Key className="w-7 h-7 text-primary" />
             </div>

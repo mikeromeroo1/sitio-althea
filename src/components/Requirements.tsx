@@ -13,11 +13,11 @@ const Requirements: React.FC = () => {
     <section id="requisitos" className="bg-gray-50 py-16">
       <div className="section-container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-semibold text-althea-800 mb-4">Requisitos para la contratación de un arrendamiento de equipo médico</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-althea-800 mb-4">Requisitos</h2>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="bg-white p-8 rounded-lg shadow-xl border border-gray-200 hover:scale-105 hover:shadow-2xl transition-all duration-300">
             <h3 className="text-xl font-semibold mb-4 text-primary border-b pb-2">Persona Física Arrendatario</h3>
             <div className="space-y-1">
               <RequirementItem text="INE o Pasaporte" />
@@ -28,7 +28,7 @@ const Requirements: React.FC = () => {
             </div>
           </div>
           
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="bg-white p-8 rounded-lg shadow-xl border border-gray-200 hover:scale-105 hover:shadow-2xl transition-all duration-300">
             <h3 className="text-xl font-semibold mb-4 text-primary border-b pb-2">Obligado Solidario</h3>
             <div className="space-y-1">
               <RequirementItem text="INE o Pasaporte" />
@@ -37,7 +37,7 @@ const Requirements: React.FC = () => {
             </div>
           </div>
           
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="bg-white p-8 rounded-lg shadow-xl border border-gray-200 hover:scale-105 hover:shadow-2xl transition-all duration-300">
             <h3 className="text-xl font-semibold mb-4 text-primary border-b pb-2">Persona Moral (Empresa)</h3>
             <div className="space-y-1">
               <RequirementItem text="Acta constitutiva" />

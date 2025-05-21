@@ -45,9 +45,8 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 3: Quick Links (Placeholder - we can add this next if you want) */}
+          {/* Column 3: Quick Links */}
           <div className="space-y-4 animate-fade-in md:col-span-1">
-            {/* 
             <h3 className="text-lg font-semibold text-white">Enlaces Rápidos</h3>
             <ul className="space-y-2 text-sm">
               <li><a href="#inicio" className="hover:text-white transition-colors">Inicio</a></li>
@@ -56,8 +55,8 @@ const Footer: React.FC = () => {
               <li><a href="#requisitos" className="hover:text-white transition-colors">Requisitos</a></li>
               <li><a href="#faqs" className="hover:text-white transition-colors">FAQs</a></li>
               <li><Link to="/cotizacion" className="hover:text-white transition-colors">Cotización</Link></li>
+              <li><Link to="/terminos-y-condiciones" className="hover:text-white transition-colors">Términos y Condiciones</Link></li>
             </ul>
-            */}
           </div>
 
         </div>

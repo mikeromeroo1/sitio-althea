@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const AboutUs: React.FC = () => {
@@ -6,7 +5,7 @@ const AboutUs: React.FC = () => {
     <section id="nosotros" className="bg-white py-16">
       <div className="section-container">
         <div className="text-center mb-10 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Sobre Nosotros</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-althea-800 mb-4">Sobre Nosotros</h2>
         </div>
         
         <div className="bg-althea-50 rounded-2xl p-8 lg:p-12 shadow-md animate-slide-in">
@@ -24,7 +23,7 @@ const AboutUs: React.FC = () => {
             </div>
             <div className="w-full md:w-2/5 animate-fade-in" style={{ animationDelay: "0.4s" }}>
               <img 
-                src="https://images.unsplash.com/photo-1666214278797-b2cc1b12be76?w=600&auto=format&fit=crop&q=80" 
+                src="/equipo-2.png" 
                 alt="Equipo de Althea" 
                 className="rounded-lg shadow-lg w-full transition-transform hover:scale-105 duration-300"
               />

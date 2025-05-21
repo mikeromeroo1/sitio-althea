@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   Accordion,
@@ -47,7 +46,7 @@ const Faqs: React.FC = () => {
     <section id="faqs" className="bg-white py-16">
       <div className="section-container">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Preguntas Frecuentes</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-althea-800 mb-4">Preguntas Frecuentes</h2>
         </div>
         
         <div className="max-w-3xl mx-auto animate-fade-in">

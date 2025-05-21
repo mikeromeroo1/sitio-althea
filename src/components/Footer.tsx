@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Phone, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -11,9 +10,9 @@ const Footer: React.FC = () => {
           <div className="mb-4 md:mb-0 animate-fade-in">
             <div className="flex items-center justify-center md:justify-start">
               <img 
-                src="/lovable-uploads/65f26a1f-a99f-49dd-9e3a-5758138d1790.png" 
+                src="/logo.png" 
                 alt="Althea Lease Logo" 
-                className="h-10 invert brightness-0 brightness-200"
+                className="h-10 filter invert(1) brightness(1.5)"
               />
             </div>
             <p className="text-gray-300 text-sm mt-2">

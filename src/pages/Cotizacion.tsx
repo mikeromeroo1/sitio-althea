@@ -9,11 +9,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/sonner";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { CheckCircle } from 'lucide-react';
 
 const Cotizacion = () => {
   const navigate = useNavigate();
   const [tipoPersona, setTipoPersona] = useState<string | undefined>(undefined);
-  const [isSubmitting, setIsSubmitting] = useState(false); // For loading state
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState<null | 'success' | 'error'>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -22,13 +24,12 @@ const Cotizacion = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmissionStatus(null);
     const formData = new FormData(e.currentTarget);
     if (tipoPersona) {
       formData.append('tipoPersona', tipoPersona);
     }
 
-    // IMPORTANT: Replace with your Google Apps Script Web app URL
-    // Preferably, set this as an environment variable in Vercel (VITE_SCRIPT_URL)
     const scriptURL = import.meta.env.VITE_SCRIPT_URL || 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_PLACEHOLDER';
 
     if (scriptURL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_PLACEHOLDER') {
@@ -36,6 +37,7 @@ const Cotizacion = () => {
         description: "La URL del script de envío no está configurada."
       });
       setIsSubmitting(false);
+      setSubmissionStatus('error');
       return;
     }
 
@@ -45,26 +47,21 @@ const Cotizacion = () => {
         body: formData,
       });
       
-      // Google Apps Script usually returns JSON. If it's text, adjust accordingly.
       const result = await response.json(); 
 
-      if (result.result === 'success') {
+      if (response.ok && result.result === 'success') {
+        setSubmissionStatus('success');
         toast.success("Solicitud de cotización enviada con éxito", {
           description: "Nos pondremos en contacto contigo pronto"
         });
-        e.currentTarget.reset(); // Reset form fields
-        setTipoPersona(undefined); // Reset select state
-        setTimeout(() => {
-          navigate('/');
-        }, 2000);
       } else {
-        // Handle errors reported by your Google Apps Script
+        setSubmissionStatus('error');
         toast.error("Error al enviar la solicitud", {
           description: result.error || "Hubo un problema con el servidor. Inténtalo más tarde."
         });
       }
     } catch (error) {
-      // Handle network errors or issues with the fetch call itself
+      setSubmissionStatus('error');
       console.error("Error al enviar el formulario:", error);
       toast.error("Error de red", {
         description: "No se pudo conectar al servidor. Verifica tu conexión e inténtalo de nuevo."
@@ -87,81 +84,92 @@ const Cotizacion = () => {
             </p>
           </div>
           
-          <Card className="animate-slide-in shadow-lg">
-            <CardHeader className="bg-althea-50 border-b">
-              <CardTitle className="text-althea-700">Información de cotización</CardTitle>
-              <CardDescription>Todos los campos marcados con * son obligatorios</CardDescription>
-            </CardHeader>
-            <CardContent className="pt-6">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="nombre">Nombre Completo *</Label>
-                    <Input id="nombre" name="nombre" placeholder="Nombre completo" required disabled={isSubmitting} />
+          {submissionStatus === 'success' ? (
+            <div className="text-center py-10 animate-fade-in bg-white shadow-lg rounded-lg">
+              <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+              <h2 className="text-2xl font-semibold mb-3 text-primary">¡Solicitud Enviada!</h2>
+              <p className="text-gray-700 mb-6 px-4">Gracias por tu interés. Nos pondremos en contacto contigo pronto para discutir tu cotización.</p>
+              <Button onClick={() => { navigate('/'); setSubmissionStatus(null); }} className="btn-primary">
+                Volver al Inicio
+              </Button>
+            </div>
+          ) : (
+            <Card className="animate-slide-in shadow-lg">
+              <CardHeader className="bg-althea-50 border-b">
+                <CardTitle className="text-althea-700">Información de cotización</CardTitle>
+                <CardDescription>Todos los campos marcados con * son obligatorios</CardDescription>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="nombre">Nombre Completo *</Label>
+                      <Input id="nombre" name="nombre" placeholder="Nombre completo" required disabled={isSubmitting} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Correo Electrónico *</Label>
+                      <Input id="email" name="email" type="email" placeholder="correo@ejemplo.com" required disabled={isSubmitting} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="telefono">Teléfono *</Label>
+                      <Input id="telefono" name="telefono" placeholder="(XX) XXXX-XXXX" required disabled={isSubmitting} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="tipo">Tipo de Persona *</Label>
+                      <Select name="tipoPersona" onValueChange={setTipoPersona} value={tipoPersona || ''} required disabled={isSubmitting}>
+                        <SelectTrigger id="tipo">
+                          <SelectValue placeholder="Selecciona tipo" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="fisica">Persona Física</SelectItem>
+                          <SelectItem value="moral">Persona Moral</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="marca">Marca del Equipo *</Label>
+                      <Input id="marca" name="marca" placeholder="Ej. Phillips, Siemens..." required disabled={isSubmitting} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="precio">Precio Aproximado *</Label>
+                      <Input id="precio" name="precio" type="number" placeholder="MXN" min="1000" required disabled={isSubmitting} />
+                    </div>
+                    <div className="space-y-2 md:col-span-2">
+                      <Label htmlFor="equipo">Descripción del Equipo *</Label>
+                      <Textarea 
+                        id="equipo" 
+                        name="equipo"
+                        placeholder="Describe el equipo que necesitas arrendar (modelo, características, etc.)" 
+                        required 
+                        className="min-h-[100px]"
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                    <div className="space-y-2 md:col-span-2">
+                      <Label htmlFor="comentarios">Comentarios adicionales</Label>
+                      <Textarea 
+                        id="comentarios" 
+                        name="comentarios"
+                        placeholder="¿Algún detalle adicional que debamos saber?"
+                        className="min-h-[100px]" 
+                        disabled={isSubmitting}
+                      />
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Correo Electrónico *</Label>
-                    <Input id="email" name="email" type="email" placeholder="correo@ejemplo.com" required disabled={isSubmitting} />
+                  
+                  <div className="flex items-center justify-center pt-4">
+                    <Button type="submit" className="btn-primary w-full md:w-auto" disabled={isSubmitting}>
+                      {isSubmitting ? 'Enviando...' : 'Enviar Solicitud de Cotización'}
+                    </Button>
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="telefono">Teléfono *</Label>
-                    <Input id="telefono" name="telefono" placeholder="(XX) XXXX-XXXX" required disabled={isSubmitting} />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="tipo">Tipo de Persona *</Label>
-                    <Select name="tipoPersona" onValueChange={setTipoPersona} value={tipoPersona} required disabled={isSubmitting}>
-                      <SelectTrigger id="tipo">
-                        <SelectValue placeholder="Selecciona tipo" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="fisica">Persona Física</SelectItem>
-                        <SelectItem value="moral">Persona Moral</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="marca">Marca del Equipo *</Label>
-                    <Input id="marca" name="marca" placeholder="Ej. Phillips, Siemens..." required disabled={isSubmitting} />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="precio">Precio Aproximado *</Label>
-                    <Input id="precio" name="precio" type="number" placeholder="MXN" min="1000" required disabled={isSubmitting} />
-                  </div>
-                  <div className="space-y-2 md:col-span-2">
-                    <Label htmlFor="equipo">Descripción del Equipo *</Label>
-                    <Textarea 
-                      id="equipo" 
-                      name="equipo"
-                      placeholder="Describe el equipo que necesitas arrendar (modelo, características, etc.)" 
-                      required 
-                      className="min-h-[100px]"
-                      disabled={isSubmitting}
-                    />
-                  </div>
-                  <div className="space-y-2 md:col-span-2">
-                    <Label htmlFor="comentarios">Comentarios adicionales</Label>
-                    <Textarea 
-                      id="comentarios" 
-                      name="comentarios"
-                      placeholder="¿Algún detalle adicional que debamos saber?"
-                      className="min-h-[100px]" 
-                      disabled={isSubmitting}
-                    />
-                  </div>
-                </div>
-                
-                <div className="flex items-center justify-center pt-4">
-                  <Button type="submit" className="btn-primary w-full md:w-auto" disabled={isSubmitting}>
-                    {isSubmitting ? 'Enviando...' : 'Enviar Solicitud de Cotización'}
-                  </Button>
-                </div>
-              </form>
-            </CardContent>
-            <CardFooter className="border-t flex justify-between bg-gray-50 text-sm text-gray-500">
-              <p>Todos tus datos están seguros</p>
-              <p>Respuesta en 24-48 horas hábiles</p>
-            </CardFooter>
-          </Card>
+                </form>
+              </CardContent>
+              <CardFooter className="border-t flex justify-between bg-gray-50 text-sm text-gray-500">
+                <p>Todos tus datos están seguros</p>
+                <p>Respuesta en 24-48 horas hábiles</p>
+              </CardFooter>
+            </Card>
+          )}
         </div>
       </main>
       

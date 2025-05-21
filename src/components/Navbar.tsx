@@ -42,19 +42,19 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8 animate-stagger">
-            <a href="#inicio" className="text-althea-800 hover:text-althea-600 font-medium transition-colors">
+            <a href="#inicio" className="text-primary hover:text-primary/80 font-medium transition-colors">
               Inicio
             </a>
-            <a href="#nosotros" className="text-althea-800 hover:text-althea-600 font-medium transition-colors">
+            <a href="#nosotros" className="text-primary hover:text-primary/80 font-medium transition-colors">
               Nosotros
             </a>
-            <a href="#beneficios" className="text-althea-800 hover:text-althea-600 font-medium transition-colors">
+            <a href="#beneficios" className="text-primary hover:text-primary/80 font-medium transition-colors">
               Beneficios
             </a>
-            <a href="#requisitos" className="text-althea-800 hover:text-althea-600 font-medium transition-colors">
+            <a href="#requisitos" className="text-primary hover:text-primary/80 font-medium transition-colors">
               Requisitos
             </a>
-            <a href="#faqs" className="text-althea-800 hover:text-althea-600 font-medium transition-colors">
+            <a href="#faqs" className="text-primary hover:text-primary/80 font-medium transition-colors">
               FAQs
             </a>
             <Link to="/cotizacion">
@@ -75,19 +75,19 @@ const Navbar: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-md animate-fade-in">
-            <a href="#inicio" className="block px-3 py-2 text-althea-800 font-medium hover:bg-althea-50 rounded-md">
+            <a href="#inicio" className="block px-3 py-2 text-primary font-medium hover:bg-primary/10 rounded-md">
               Inicio
             </a>
-            <a href="#nosotros" className="block px-3 py-2 text-althea-800 font-medium hover:bg-althea-50 rounded-md">
+            <a href="#nosotros" className="block px-3 py-2 text-primary font-medium hover:bg-primary/10 rounded-md">
               Nosotros
             </a>
-            <a href="#beneficios" className="block px-3 py-2 text-althea-800 font-medium hover:bg-althea-50 rounded-md">
+            <a href="#beneficios" className="block px-3 py-2 text-primary font-medium hover:bg-primary/10 rounded-md">
               Beneficios
             </a>
-            <a href="#requisitos" className="block px-3 py-2 text-althea-800 font-medium hover:bg-althea-50 rounded-md">
+            <a href="#requisitos" className="block px-3 py-2 text-primary font-medium hover:bg-primary/10 rounded-md">
               Requisitos
             </a>
-            <a href="#faqs" className="block px-3 py-2 text-althea-800 font-medium hover:bg-althea-50 rounded-md">
+            <a href="#faqs" className="block px-3 py-2 text-primary font-medium hover:bg-primary/10 rounded-md">
               FAQs
             </a>
             <div className="px-3 py-2">

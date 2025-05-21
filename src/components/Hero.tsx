@@ -7,11 +7,11 @@ const Hero: React.FC = () => {
   return (
     <section id="inicio" className="hero-section">
       <div className="section-container flex flex-col md:flex-row items-center py-16 md:py-24">
-        <div className="w-full md:w-1/2 text-white z-10 animate-fade-in">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 animate-fade-in">
+        <div className="w-full md:w-1/2 md:pr-8 text-white z-10 animate-fade-in">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 animate-fade-in">
             Facilitamos el arrendamiento de tu equipo médico para que tu práctica no se detenga.
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90 animate-slide-in">
+          <p className="text-base md:text-lg mb-8 text-white/90 animate-slide-in">
             Soluciones personalizadas para profesionales de la salud
           </p>
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
             </Link>
           </div>
         </div>
-        <div className="w-full md:w-1/2 mt-10 md:mt-0 z-10">
+        <div className="w-full md:w-1/2 md:pl-8 mt-10 md:mt-0 z-10">
           <div className="relative animate-slide-in" style={{ animationDelay: "0.2s" }}>
             <img 
               src="/equipo-1.png" 

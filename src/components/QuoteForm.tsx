@@ -6,10 +6,10 @@ import { ArrowRight } from "lucide-react";
 
 const QuoteForm: React.FC = () => {
   return (
-    <section id="solicitud" className="bg-althea-50 py-16">
+    <section id="solicitud" className="bg-primary/10 py-16">
       <div className="section-container">
         <div className="text-center mb-10 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-semibold text-althea-800 mb-4">Solicita tu cotización</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-primary mb-4">Solicita tu cotización</h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
             Completa el formulario y recibe una cotización personalizada para tu equipo médico.
           </p>

@@ -3,7 +3,7 @@ import { Check } from 'lucide-react';
 
 const RequirementItem = ({ text }: { text: string }) => (
   <div className="flex items-start mb-2">
-    <Check className="w-5 h-5 text-althea-600 mt-0.5 mr-2 flex-shrink-0" />
+    <Check className="w-5 h-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
     <span>{text}</span>
   </div>
 );
@@ -18,7 +18,7 @@ const Requirements: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-4 text-althea-700 border-b pb-2">Persona Física Arrendatario</h3>
+            <h3 className="text-xl font-semibold mb-4 text-primary border-b pb-2">Persona Física Arrendatario</h3>
             <div className="space-y-1">
               <RequirementItem text="INE o Pasaporte" />
               <RequirementItem text="Comprobante de domicilio (no mayor a 3 meses)" />
@@ -29,7 +29,7 @@ const Requirements: React.FC = () => {
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-4 text-althea-700 border-b pb-2">Obligado Solidario</h3>
+            <h3 className="text-xl font-semibold mb-4 text-primary border-b pb-2">Obligado Solidario</h3>
             <div className="space-y-1">
               <RequirementItem text="INE o Pasaporte" />
               <RequirementItem text="Comprobante de domicilio (no mayor a 3 meses)" />
@@ -38,7 +38,7 @@ const Requirements: React.FC = () => {
           </div>
           
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-4 text-althea-700 border-b pb-2">Persona Moral (Empresa)</h3>
+            <h3 className="text-xl font-semibold mb-4 text-primary border-b pb-2">Persona Moral (Empresa)</h3>
             <div className="space-y-1">
               <RequirementItem text="Acta constitutiva" />
               <RequirementItem text="Poder notarial del representante legal" />

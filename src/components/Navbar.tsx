@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -34,16 +33,15 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <img 
-                src="/lovable-uploads/65f26a1f-a99f-49dd-9e3a-5758138d1790.png" 
+                src="/logo.png" 
                 alt="Althea Lease Logo" 
                 className="h-10 md:h-12"
               />
             </Link>
-            <span className="ml-3 text-sm text-gray-500 hidden md:block animate-fade-in">Tu aliado financiero en el mundo médico</span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8 animate-stagger">
+          <div className="hidden md:flex items-center space-x-8 animate-stagger">
             <a href="#inicio" className="text-althea-800 hover:text-althea-600 font-medium transition-colors">
               Inicio
             </a>

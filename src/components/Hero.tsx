@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -27,8 +26,8 @@ const Hero: React.FC = () => {
         <div className="w-full md:w-1/2 mt-10 md:mt-0 z-10">
           <div className="relative animate-slide-in" style={{ animationDelay: "0.2s" }}>
             <img 
-              src="https://images.unsplash.com/photo-1516549655040-3c45632e42f5?w=800&auto=format&fit=crop&q=80"
-              alt="Equipamiento médico moderno" 
+              src="/equipo-1.png" 
+              alt="Equipo médico de Althea Lease" 
               className="rounded-lg shadow-xl w-full object-cover"
             />
             <div className="absolute -bottom-4 -right-4 bg-white p-4 rounded-lg shadow-lg animate-bounce">

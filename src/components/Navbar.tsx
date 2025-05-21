@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   // DEBUGGING: Log when isScrolled changes
   useEffect(() => {
@@ -46,6 +47,18 @@ const Navbar: React.FC = () => {
   // DEBUGGING: Log determined classes
   console.log('[Navbar] Determined classes:', { navBgClass, navShadowClass, linkColorClass, logoFilterClass });
 
+  const navLinks = [
+    { href: "#inicio", text: "Inicio" },
+    { href: "#beneficios", text: "Beneficios" },
+    { href: "#requisitos", text: "Requisitos" },
+    { href: "#faqs", text: "FAQs" },
+    { href: "#nosotros", text: "Nosotros" },
+  ];
+
+  const getLinkPath = (href: string) => {
+    return location.pathname === '/' ? href : `/${href}`;
+  };
+
   return (
     <nav className={`fixed top-0 left-0 w-full py-3 z-50 transition-colors duration-300 ${navBgClass} ${navShadowClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -62,21 +75,15 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Navigation */}
           <div className={`hidden md:flex items-center space-x-8`}>
-            <a href="#inicio" className={`${linkColorClass} ${linkHoverColorClass} font-medium transition-colors`}>
-              Inicio
-            </a>
-            <a href="#nosotros" className={`${linkColorClass} ${linkHoverColorClass} font-medium transition-colors`}>
-              Nosotros
-            </a>
-            <a href="#beneficios" className={`${linkColorClass} ${linkHoverColorClass} font-medium transition-colors`}>
-              Beneficios
-            </a>
-            <a href="#requisitos" className={`${linkColorClass} ${linkHoverColorClass} font-medium transition-colors`}>
-              Requisitos
-            </a>
-            <a href="#faqs" className={`${linkColorClass} ${linkHoverColorClass} font-medium transition-colors`}>
-              FAQs
-            </a>
+            {navLinks.map(link => (
+              <Link 
+                key={link.text} 
+                to={getLinkPath(link.href)} 
+                className={`${linkColorClass} ${linkHoverColorClass} font-medium transition-colors`}
+              >
+                {link.text}
+              </Link>
+            ))}
             <Link to="/cotizacion">
               <Button className="btn-primary">Solicita tu Cotización</Button>
             </Link>
@@ -95,23 +102,18 @@ const Navbar: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-md animate-fade-in">
-            <a href="#inicio" className="block px-3 py-2 text-primary font-medium hover:bg-primary/10 rounded-md">
-              Inicio
-            </a>
-            <a href="#nosotros" className="block px-3 py-2 text-primary font-medium hover:bg-primary/10 rounded-md">
-              Nosotros
-            </a>
-            <a href="#beneficios" className="block px-3 py-2 text-primary font-medium hover:bg-primary/10 rounded-md">
-              Beneficios
-            </a>
-            <a href="#requisitos" className="block px-3 py-2 text-primary font-medium hover:bg-primary/10 rounded-md">
-              Requisitos
-            </a>
-            <a href="#faqs" className="block px-3 py-2 text-primary font-medium hover:bg-primary/10 rounded-md">
-              FAQs
-            </a>
+            {navLinks.map(link => (
+              <Link 
+                key={link.text} 
+                to={getLinkPath(link.href)} 
+                onClick={() => setIsMenuOpen(false)}
+                className="block px-3 py-2 text-primary font-medium hover:bg-primary/10 rounded-md"
+              >
+                {link.text}
+              </Link>
+            ))}
             <div className="px-3 py-2">
-              <Link to="/cotizacion" className="block w-full">
+              <Link to="/cotizacion" className="block w-full" onClick={() => setIsMenuOpen(false)}>
                 <Button className="w-full btn-primary">Solicita tu Cotización</Button>
               </Link>
             </div>

@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 const Cotizacion = () => {
   const navigate = useNavigate();
   const [tipoPersona, setTipoPersona] = useState<string | undefined>(undefined);
+  const [isSubmitting, setIsSubmitting] = useState(false); // For loading state
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,39 +21,56 @@ const Cotizacion = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const formData = new FormData(e.currentTarget);
     if (tipoPersona) {
       formData.append('tipoPersona', tipoPersona);
     }
-    
-    const formProps = Object.fromEntries(formData.entries());
-    console.log("Form Data:", formProps);
 
-    const YOUR_BACKEND_ENDPOINT = '/api/submit-cotizacion'; 
+    // IMPORTANT: Replace with your Google Apps Script Web app URL
+    // Preferably, set this as an environment variable in Vercel (VITE_SCRIPT_URL)
+    const scriptURL = import.meta.env.VITE_SCRIPT_URL || 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_PLACEHOLDER';
+
+    if (scriptURL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_PLACEHOLDER') {
+      toast.error("Error de configuración", {
+        description: "La URL del script de envío no está configurada."
+      });
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
-      const response = await fetch(YOUR_BACKEND_ENDPOINT, {
+      const response = await fetch(scriptURL, {
         method: 'POST',
+        body: formData,
       });
+      
+      // Google Apps Script usually returns JSON. If it's text, adjust accordingly.
+      const result = await response.json(); 
 
-      if (response.ok) {
+      if (result.result === 'success') {
         toast.success("Solicitud de cotización enviada con éxito", {
           description: "Nos pondremos en contacto contigo pronto"
         });
+        e.currentTarget.reset(); // Reset form fields
+        setTipoPersona(undefined); // Reset select state
         setTimeout(() => {
           navigate('/');
         }, 2000);
       } else {
-        const errorData = await response.json().catch(() => ({ message: "Error desconocido del servidor" }));
+        // Handle errors reported by your Google Apps Script
         toast.error("Error al enviar la solicitud", {
-          description: errorData.message || "Por favor, inténtalo de nuevo más tarde."
+          description: result.error || "Hubo un problema con el servidor. Inténtalo más tarde."
         });
       }
     } catch (error) {
-      console.error("Fetch error:", error);
+      // Handle network errors or issues with the fetch call itself
+      console.error("Error al enviar el formulario:", error);
       toast.error("Error de red", {
-        description: "No se pudo conectar al servidor. Verifica tu conexión."
+        description: "No se pudo conectar al servidor. Verifica tu conexión e inténtalo de nuevo."
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -79,19 +97,19 @@ const Cotizacion = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="nombre">Nombre Completo *</Label>
-                    <Input id="nombre" name="nombre" placeholder="Nombre completo" required />
+                    <Input id="nombre" name="nombre" placeholder="Nombre completo" required disabled={isSubmitting} />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Correo Electrónico *</Label>
-                    <Input id="email" name="email" type="email" placeholder="correo@ejemplo.com" required />
+                    <Input id="email" name="email" type="email" placeholder="correo@ejemplo.com" required disabled={isSubmitting} />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="telefono">Teléfono *</Label>
-                    <Input id="telefono" name="telefono" placeholder="(XX) XXXX-XXXX" required />
+                    <Input id="telefono" name="telefono" placeholder="(XX) XXXX-XXXX" required disabled={isSubmitting} />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="tipo">Tipo de Persona *</Label>
-                    <Select name="tipoPersona" onValueChange={setTipoPersona} required>
+                    <Select name="tipoPersona" onValueChange={setTipoPersona} value={tipoPersona} required disabled={isSubmitting}>
                       <SelectTrigger id="tipo">
                         <SelectValue placeholder="Selecciona tipo" />
                       </SelectTrigger>
@@ -103,11 +121,11 @@ const Cotizacion = () => {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="marca">Marca del Equipo *</Label>
-                    <Input id="marca" name="marca" placeholder="Ej. Phillips, Siemens..." required />
+                    <Input id="marca" name="marca" placeholder="Ej. Phillips, Siemens..." required disabled={isSubmitting} />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="precio">Precio Aproximado *</Label>
-                    <Input id="precio" name="precio" type="number" placeholder="MXN" min="1000" required />
+                    <Input id="precio" name="precio" type="number" placeholder="MXN" min="1000" required disabled={isSubmitting} />
                   </div>
                   <div className="space-y-2 md:col-span-2">
                     <Label htmlFor="equipo">Descripción del Equipo *</Label>
@@ -117,6 +135,7 @@ const Cotizacion = () => {
                       placeholder="Describe el equipo que necesitas arrendar (modelo, características, etc.)" 
                       required 
                       className="min-h-[100px]"
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className="space-y-2 md:col-span-2">
@@ -126,13 +145,14 @@ const Cotizacion = () => {
                       name="comentarios"
                       placeholder="¿Algún detalle adicional que debamos saber?"
                       className="min-h-[100px]" 
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
                 
                 <div className="flex items-center justify-center pt-4">
-                  <Button type="submit" className="btn-primary w-full md:w-auto">
-                    Enviar Solicitud de Cotización
+                  <Button type="submit" className="btn-primary w-full md:w-auto" disabled={isSubmitting}>
+                    {isSubmitting ? 'Enviando...' : 'Enviar Solicitud de Cotización'}
                   </Button>
                 </div>
               </form>

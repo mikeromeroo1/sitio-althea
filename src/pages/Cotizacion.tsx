@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
@@ -12,19 +12,48 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 const Cotizacion = () => {
   const navigate = useNavigate();
+  const [tipoPersona, setTipoPersona] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Solicitud de cotización enviada con éxito", {
-      description: "Nos pondremos en contacto contigo pronto"
-    });
-    setTimeout(() => {
-      navigate('/');
-    }, 2000);
+    const formData = new FormData(e.currentTarget);
+    if (tipoPersona) {
+      formData.append('tipoPersona', tipoPersona);
+    }
+    
+    const formProps = Object.fromEntries(formData.entries());
+    console.log("Form Data:", formProps);
+
+    const YOUR_BACKEND_ENDPOINT = '/api/submit-cotizacion'; 
+
+    try {
+      const response = await fetch(YOUR_BACKEND_ENDPOINT, {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        toast.success("Solicitud de cotización enviada con éxito", {
+          description: "Nos pondremos en contacto contigo pronto"
+        });
+        setTimeout(() => {
+          navigate('/');
+        }, 2000);
+      } else {
+        const errorData = await response.json().catch(() => ({ message: "Error desconocido del servidor" }));
+        toast.error("Error al enviar la solicitud", {
+          description: errorData.message || "Por favor, inténtalo de nuevo más tarde."
+        });
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+      toast.error("Error de red", {
+        description: "No se pudo conectar al servidor. Verifica tu conexión."
+      });
+    }
   };
 
   return (
@@ -50,20 +79,20 @@ const Cotizacion = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="nombre">Nombre Completo *</Label>
-                    <Input id="nombre" placeholder="Nombre completo" required />
+                    <Input id="nombre" name="nombre" placeholder="Nombre completo" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Correo Electrónico *</Label>
-                    <Input id="email" type="email" placeholder="correo@ejemplo.com" required />
+                    <Input id="email" name="email" type="email" placeholder="correo@ejemplo.com" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="telefono">Teléfono *</Label>
-                    <Input id="telefono" placeholder="(XX) XXXX-XXXX" required />
+                    <Input id="telefono" name="telefono" placeholder="(XX) XXXX-XXXX" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="tipo">Tipo de Persona *</Label>
-                    <Select>
-                      <SelectTrigger>
+                    <Select name="tipoPersona" onValueChange={setTipoPersona} required>
+                      <SelectTrigger id="tipo">
                         <SelectValue placeholder="Selecciona tipo" />
                       </SelectTrigger>
                       <SelectContent>
@@ -74,16 +103,17 @@ const Cotizacion = () => {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="marca">Marca del Equipo *</Label>
-                    <Input id="marca" placeholder="Ej. Phillips, Siemens..." required />
+                    <Input id="marca" name="marca" placeholder="Ej. Phillips, Siemens..." required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="precio">Precio Aproximado *</Label>
-                    <Input id="precio" type="number" placeholder="MXN" min="1000" required />
+                    <Input id="precio" name="precio" type="number" placeholder="MXN" min="1000" required />
                   </div>
                   <div className="space-y-2 md:col-span-2">
                     <Label htmlFor="equipo">Descripción del Equipo *</Label>
                     <Textarea 
                       id="equipo" 
+                      name="equipo"
                       placeholder="Describe el equipo que necesitas arrendar (modelo, características, etc.)" 
                       required 
                       className="min-h-[100px]"
@@ -93,6 +123,7 @@ const Cotizacion = () => {
                     <Label htmlFor="comentarios">Comentarios adicionales</Label>
                     <Textarea 
                       id="comentarios" 
+                      name="comentarios"
                       placeholder="¿Algún detalle adicional que debamos saber?"
                       className="min-h-[100px]" 
                     />

@@ -8,11 +8,6 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  // DEBUGGING: Log when isScrolled changes
-  useEffect(() => {
-    console.log('[Navbar] isScrolled state changed:', isScrolled);
-  }, [isScrolled]);
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -20,32 +15,21 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      // DEBUGGING: Log scroll position and evaluation
-      console.log('[Navbar] currentScrollY:', currentScrollY, 'Evaluation for isScrolled (must be >80):', currentScrollY > 80);
-      setIsScrolled(currentScrollY > 80);
+      setIsScrolled(currentScrollY > 50);
     };
     
-    // Call explicitly on mount to set initial state
-    console.log('[Navbar] Component did mount, calling handleScroll initially.');
-    handleScroll(); 
-
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      console.log('[Navbar] Component will unmount, removing scroll listener.');
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []); // Empty dependency array ensures this runs only on mount and unmount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  // Define classes based on isScrolled state
-  const navBgClass = isScrolled ? 'bg-white/90 backdrop-blur-md' : 'bg-transparent';
-  const navShadowClass = isScrolled ? 'shadow-md' : 'shadow-none';
-  const linkColorClass = isScrolled ? 'text-primary' : 'text-foreground';
-  const linkHoverColorClass = isScrolled ? 'hover:text-primary/80' : 'hover:text-foreground/80';
-  const logoFilterClass = '';
-  const mobileIconColorClass = isScrolled ? 'text-primary' : 'text-foreground';
+  const navBgClass = isScrolled 
+    ? 'bg-white/90 backdrop-blur-xl border-b border-slate-200/50 shadow-soft' 
+    : 'bg-transparent';
   
-  // DEBUGGING: Log determined classes
-  console.log('[Navbar] Determined classes:', { navBgClass, navShadowClass, linkColorClass, logoFilterClass });
+  const linkColorClass = isScrolled ? 'text-slate-700' : 'text-slate-900';
+  const linkHoverColorClass = isScrolled ? 'hover:text-blue-600' : 'hover:text-blue-700';
+  const mobileIconColorClass = isScrolled ? 'text-slate-700' : 'text-slate-900';
 
   const navLinks = [
     { href: "#inicio", text: "Inicio" },
@@ -60,62 +44,80 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full py-3 z-50 transition-colors duration-300 ${navBgClass} ${navShadowClass}`}>
+    <nav className={`fixed top-0 left-0 w-full py-4 z-50 transition-all duration-500 ${navBgClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center">
+          {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center">
+            <Link to="/" className="flex items-center group">
               <img 
                 src="/logo.png" 
-                alt="Althea Lease Logo" 
-                className={`h-10 md:h-12 transition-all duration-300 ${logoFilterClass}`}
+                alt="Althea Lease - Arrendamiento Médico" 
+                className="h-10 md:h-12 transition-all duration-300 group-hover:scale-105"
               />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className={`hidden md:flex items-center space-x-8`}>
+          <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map(link => (
               <Link 
                 key={link.text} 
                 to={getLinkPath(link.href)} 
-                className={`${linkColorClass} ${linkHoverColorClass} font-medium transition-colors`}
+                className={`${linkColorClass} ${linkHoverColorClass} font-medium transition-all duration-300 relative group py-2`}
               >
                 {link.text}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
+          </div>
+
+          {/* CTA Button */}
+          <div className="hidden lg:flex items-center">
             <Link to="/cotizacion">
-              <Button className="btn-primary">Solicita tu Cotización</Button>
+              <Button className="btn-primary">
+                Solicitar Cotización
+              </Button>
             </Link>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button onClick={toggleMenu} className={mobileIconColorClass}>
+          <div className="lg:hidden flex items-center">
+            <button 
+              onClick={toggleMenu} 
+              className={`${mobileIconColorClass} p-2 rounded-xl hover:bg-slate-100 transition-all duration-300`}
+              aria-label="Menú de navegación"
+            >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu - background should be white when open */}
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-md animate-fade-in">
-            {navLinks.map(link => (
-              <Link 
-                key={link.text} 
-                to={getLinkPath(link.href)} 
-                onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-2 text-primary font-medium hover:bg-primary/10 rounded-md"
-              >
-                {link.text}
-              </Link>
-            ))}
-            <div className="px-3 py-2">
-              <Link to="/cotizacion" className="block w-full" onClick={() => setIsMenuOpen(false)}>
-                <Button className="w-full btn-primary">Solicita tu Cotización</Button>
-              </Link>
+        <div className="lg:hidden">
+          <div className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-b border-slate-200/50 shadow-strong animate-fade-in">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+              <div className="flex flex-col space-y-4">
+                {navLinks.map(link => (
+                  <Link 
+                    key={link.text} 
+                    to={getLinkPath(link.href)} 
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-slate-700 hover:text-blue-600 font-medium py-3 px-4 rounded-xl hover:bg-slate-50 transition-all duration-300 text-center"
+                  >
+                    {link.text}
+                  </Link>
+                ))}
+                <div className="pt-4 border-t border-slate-200">
+                  <Link to="/cotizacion" className="block w-full" onClick={() => setIsMenuOpen(false)}>
+                    <Button className="w-full btn-primary">
+                      Solicitar Cotización
+                    </Button>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -51,7 +51,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               <img 
-                src="/logo.png" 
+                src="/logo-azul.png" 
                 alt="Althea Lease - Arrendamiento Médico" 
                 className="h-10 md:h-12 transition-all duration-300 group-hover:scale-105"
               />

@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
             <div className="lg:col-span-2 space-y-6">
               <Link to="/" className="inline-block group">
                 <img 
-                  src="/logo.png" 
+                  src="/logo-blanco.png" 
                   alt="Althea Lease - Arrendamiento Médico" 
                   className="h-12 filter brightness-0 invert transition-all duration-300 group-hover:scale-105"
                 />

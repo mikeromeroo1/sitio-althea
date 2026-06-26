@@ -58,14 +58,14 @@ const Footer: React.FC = () => {
                 
                 <li className="group">
                   <a 
-                    href="https://wa.me/525593312922" 
+                    href="https://wa.me/523329895340"
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800/50 transition-all duration-300"
                   >
                     <Phone className="w-5 h-5 text-slate-400 group-hover:text-green-400 transition-colors flex-shrink-0" />
                     <span className="text-sm text-slate-300 group-hover:text-slate-200 transition-colors">
-                      WhatsApp: +52 (55) 9331-2922
+                      WhatsApp: +52 33 2989 5340
                     </span>
                     <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover:text-green-400 opacity-0 group-hover:opacity-100 transition-all duration-300" />
                   </a>
@@ -73,12 +73,12 @@ const Footer: React.FC = () => {
                 
                 <li className="group">
                   <a 
-                    href="tel:+525541610361" 
+                    href="tel:+523329895340"
                     className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800/50 transition-all duration-300"
                   >
                     <Phone className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors flex-shrink-0" />
                     <span className="text-sm text-slate-300 group-hover:text-slate-200 transition-colors">
-                      Teléfono: +52 (55) 4161-0361
+                      Teléfono: +52 33 2989 5340
                     </span>
                     <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover:text-blue-400 opacity-0 group-hover:opacity-100 transition-all duration-300" />
                   </a>
@@ -86,12 +86,12 @@ const Footer: React.FC = () => {
                 
                 <li className="group">
                   <a 
-                    href="mailto:service@althea.com" 
+                    href="mailto:Service@althealease.com"
                     className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800/50 transition-all duration-300"
                   >
                     <Mail className="w-5 h-5 text-slate-400 group-hover:text-purple-400 transition-colors flex-shrink-0" />
                     <span className="text-sm text-slate-300 group-hover:text-slate-200 transition-colors">
-                      service@althea.com
+                      Service@althealease.com
                     </span>
                     <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover:text-purple-400 opacity-0 group-hover:opacity-100 transition-all duration-300" />
                   </a>

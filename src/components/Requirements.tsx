@@ -10,7 +10,7 @@ const RequirementItem = ({ text }: { text: string }) => (
 
 const Requirements: React.FC = () => {
   return (
-    <section id="requisitos" className="bg-gray-50 py-16">
+    <section id="requisitos" className="bg-white py-16 md:py-20 border-t border-slate-200">
       <div className="section-container">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold text-althea-800 mb-4">Requisitos</h2>

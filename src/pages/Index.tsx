@@ -3,8 +3,10 @@ import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import AboutUs from '../components/AboutUs';
+import Challenges from '../components/Challenges';
 import Benefits from '../components/Benefits';
 import AdditionalBenefits from '../components/AdditionalBenefits';
+import Services from '../components/Services';
 import Requirements from '../components/Requirements';
 import Faqs from '../components/Faqs';
 import QuoteForm from '../components/QuoteForm';
@@ -31,8 +33,10 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
+      <Challenges />
       <Benefits />
       <AdditionalBenefits />
+      <Services />
       <Requirements />
       <Faqs />
       <AboutUs />

@@ -21,15 +21,15 @@ const Hero: React.FC = () => {
 
               {/* Main Heading */}
               <h1 className="font-heading text-3xl sm:text-4xl font-bold text-slate-900 animate-slide-up leading-tight" style={{ animationDelay: "0.1s" }}>
-                Equipos Médicos de{" "}
+                Tú cuidas a tus pacientes,{" "}
                 <span className="text-gradient-primary">
-                  Alta Tecnología
+                  y nosotros tu estabilidad financiera.
                 </span>
               </h1>
               
               {/* Subheading */}
               <p className="text-base text-slate-600 leading-relaxed animate-slide-up max-w-sm mx-auto" style={{ animationDelay: "0.2s" }}>
-                Arrendamiento inteligente con marcas líderes, tasas competitivas y asesoría especializada.
+                En Althea Lease permitimos que médicos y clínicas accedan a tecnología de punta sin descapitalizarse ni detener su práctica.
               </p>
             </div>
 
@@ -37,15 +37,15 @@ const Hero: React.FC = () => {
             <div className="text-center space-y-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
               <div className="flex items-center gap-2 justify-center">
                 <CheckCircle className="w-5 h-5 text-green-600" />
-                <span className="text-sm font-medium text-slate-700">Aprobación rápida</span>
+                <span className="text-sm font-medium text-slate-700">Siempre a la vanguardia.</span>
               </div>
               <div className="flex items-center gap-2 justify-center">
                 <CheckCircle className="w-5 h-5 text-green-600" />
-                <span className="text-sm font-medium text-slate-700">Tasas preferenciales</span>
+                <span className="text-sm font-medium text-slate-700">Plazos de hasta 48 meses.</span>
               </div>
               <div className="flex items-center gap-2 justify-center mb-6">
                 <CheckCircle className="w-5 h-5 text-green-600" />
-                <span className="text-sm font-medium text-slate-700">Asesoría incluida</span>
+                <span className="text-sm font-medium text-slate-700">Gestión operativa completa.</span>
               </div>
             </div>
 
@@ -63,9 +63,9 @@ const Hero: React.FC = () => {
                 <div className="bg-white backdrop-blur-sm rounded-lg p-3 text-center shadow-soft border border-green-100">
                   <div className="flex items-center justify-center gap-2 mb-1">
                     <CheckCircle className="w-4 h-4 text-green-600" />
-                    <span className="font-semibold text-slate-900 text-sm">100% Deducible</span>
+                    <span className="font-semibold text-slate-900 text-sm">Tasas preferenciales</span>
                   </div>
-                  <span className="text-xs text-slate-600">Beneficios fiscales</span>
+                  <span className="text-xs text-slate-600">Alianzas estratégicas.</span>
                 </div>
               </div>
 
@@ -73,26 +73,10 @@ const Hero: React.FC = () => {
               <div className="animate-slide-up" style={{ animationDelay: "0.5s" }}>
                 <Link to="/cotizacion">
                   <Button className="btn-primary group text-base px-8 py-4 h-auto w-full">
-                    Obtener Cotización
+                    Cotiza Ahora
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-              </div>
-
-              {/* Trust Indicators */}
-              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-200 animate-fade-in" style={{ animationDelay: "0.6s" }}>
-                <div className="text-center">
-                  <div className="text-xl font-bold text-slate-900">500+</div>
-                  <div className="text-xs text-slate-600">Equipos Entregados</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl font-bold text-slate-900">98%</div>
-                  <div className="text-xs text-slate-600">Satisfacción</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl font-bold text-slate-900">24/7</div>
-                  <div className="text-xs text-slate-600">Soporte Técnico</div>
-                </div>
               </div>
             </div>
           </div>
@@ -110,30 +94,30 @@ const Hero: React.FC = () => {
 
             {/* Main Heading */}
             <h1 className="font-heading text-4xl xl:text-5xl font-bold text-slate-900 mb-4 animate-slide-up leading-tight" style={{ animationDelay: "0.1s" }}>
-              Equipos Médicos de{" "}
+              Tú cuidas a tus pacientes,{" "}
               <span className="text-gradient-primary">
-                Alta Tecnología
+                y nosotros tu estabilidad financiera.
               </span>
             </h1>
             
             {/* Subheading */}
             <p className="text-lg text-slate-600 mb-6 leading-relaxed animate-slide-up" style={{ animationDelay: "0.2s" }}>
-              Arrendamiento inteligente con marcas líderes, tasas competitivas y asesoría especializada para profesionales de la salud.
+              En Althea Lease permitimos que médicos y clínicas accedan a tecnología de punta sin descapitalizarse ni detener su práctica.
             </p>
 
             {/* Key Features */}
             <div className="flex flex-row gap-4 mb-6 animate-slide-up" style={{ animationDelay: "0.3s" }}>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-green-600" />
-                <span className="text-xs font-medium text-slate-700">Aprobación rápida</span>
+                <span className="text-xs font-medium text-slate-700">Siempre a la vanguardia.</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-green-600" />
-                <span className="text-xs font-medium text-slate-700">Tasas preferenciales</span>
+                <span className="text-xs font-medium text-slate-700">Plazos de hasta 48 meses.</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-green-600" />
-                <span className="text-xs font-medium text-slate-700">Asesoría incluida</span>
+                <span className="text-xs font-medium text-slate-700">Gestión operativa completa.</span>
               </div>
             </div>
 
@@ -141,28 +125,10 @@ const Hero: React.FC = () => {
             <div className="mb-8 animate-slide-up" style={{ animationDelay: "0.4s" }}>
               <Link to="/cotizacion">
                 <Button className="btn-primary group text-sm px-6 py-3 h-auto">
-                  Obtener Cotización
+                  Cotiza Ahora
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="flex flex-row items-center gap-4 pt-4 border-t border-slate-200 animate-fade-in" style={{ animationDelay: "0.5s" }}>
-              <div className="text-left">
-                <div className="text-xl lg:text-2xl font-bold text-slate-900">500+</div>
-                <div className="text-xs text-slate-600">Equipos Entregados</div>
-              </div>
-              <div className="w-px h-8 bg-slate-200"></div>
-              <div className="text-left">
-                <div className="text-xl lg:text-2xl font-bold text-slate-900">98%</div>
-                <div className="text-xs text-slate-600">Satisfacción</div>
-              </div>
-              <div className="w-px h-8 bg-slate-200"></div>
-              <div className="text-left">
-                <div className="text-xl lg:text-2xl font-bold text-slate-900">24/7</div>
-                <div className="text-xs text-slate-600">Soporte Técnico</div>
-              </div>
             </div>
           </div>
 
@@ -199,8 +165,8 @@ const Hero: React.FC = () => {
                     <CheckCircle className="w-5 h-5 text-green-600" />
                   </div>
                   <div>
-                    <div className="font-semibold text-slate-900 text-sm">100% Deducible</div>
-                    <div className="text-xs text-slate-600">Beneficios fiscales</div>
+                    <div className="font-semibold text-slate-900 text-sm">Tasas preferenciales</div>
+                    <div className="text-xs text-slate-600">Alianzas estratégicas.</div>
                   </div>
                 </div>
               </div>

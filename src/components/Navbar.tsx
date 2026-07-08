@@ -33,7 +33,8 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { href: "#inicio", text: "Inicio" },
-    { href: "#beneficios", text: "Beneficios" },
+    { href: "#soluciones", text: "Soluciones" },
+    { href: "#servicios", text: "Servicios" },
     { href: "#requisitos", text: "Requisitos" },
     { href: "#faqs", text: "FAQs" },
     { href: "#nosotros", text: "Nosotros" },
@@ -51,9 +52,9 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               <img 
-                src="/logo-azul.png" 
-                alt="Althea Lease - Arrendamiento Médico" 
-                className="h-10 md:h-12 transition-all duration-300 group-hover:scale-105"
+                src="/logo-verde.png"
+                alt="Althea Lease - Arrendamiento Médico"
+                className="h-28 md:h-36 w-auto -my-8 md:-my-11 -translate-x-2 translate-y-1.5 transition-all duration-300 group-hover:scale-105"
               />
             </Link>
           </div>
@@ -76,7 +77,7 @@ const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center">
             <Link to="/cotizacion">
               <Button className="btn-primary">
-                Solicitar Cotización
+                Cotiza Ahora
               </Button>
             </Link>
           </div>
@@ -113,7 +114,7 @@ const Navbar: React.FC = () => {
                 <div className="pt-4 border-t border-slate-200">
                   <Link to="/cotizacion" className="block w-full" onClick={() => setIsMenuOpen(false)}>
                     <Button className="w-full btn-primary">
-                      Solicitar Cotización
+                      Cotiza Ahora
                     </Button>
                   </Link>
                 </div>

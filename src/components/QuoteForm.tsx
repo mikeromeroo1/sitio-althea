@@ -44,7 +44,7 @@ const QuoteForm: React.FC = () => {
               <div className="md:col-span-2 mt-4">
                 <Link to="/cotizacion">
                   <Button className="btn-primary w-full group">
-                    Solicitar cotización completa
+                    Cotiza Ahora
                     <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>

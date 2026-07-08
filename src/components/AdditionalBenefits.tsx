@@ -26,11 +26,11 @@ const benefits = [
 
 const AdditionalBenefits: React.FC = () => {
   return (
-    <section id="additional-benefits" className="py-12 md:py-20 bg-slate-50">
+    <section id="additional-benefits" className="pt-8 md:pt-10 pb-12 md:pb-20 bg-slate-50">
       <div className="section-container">
         <div className="text-center mb-12 md:mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-semibold text-primary mb-4">
-            Beneficios Adicionales
+            Alianzas Estratégicas
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
             Ofrecemos más que el arrendamiento de un equipo médico.

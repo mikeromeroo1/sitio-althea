@@ -110,7 +110,7 @@ const Footer: React.FC = () => {
                 {[
                   { href: "#inicio", text: "Inicio" },
                   { href: "#nosotros", text: "Nosotros" },
-                  { href: "#beneficios", text: "Beneficios" },
+                  { href: "#soluciones", text: "Soluciones" },
                   { href: "#requisitos", text: "Requisitos" },
                   { href: "#faqs", text: "FAQs" },
                 ].map((link) => (

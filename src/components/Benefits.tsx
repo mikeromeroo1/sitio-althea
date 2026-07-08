@@ -1,12 +1,12 @@
 import React from 'react';
-import { Clock, Percent, UserPlus, Key, TrendingUp, Shield, Zap, Award } from 'lucide-react';
+import { Clock, Percent, Sparkles, Key, TrendingUp, Shield, Zap, Award } from 'lucide-react';
 
 const Benefits: React.FC = () => {
   const benefits = [
     {
       icon: Zap,
       title: "Agilidad Garantizada",
-      description: "Proceso 100% digital con respuesta en 24-48 horas. Sin papeleo innecesario ni visitas presenciales.",
+      description: "Respuesta en 24-48 horas sin papeleo innecesario.",
       color: "blue",
       delay: "0.1s"
     },
@@ -18,9 +18,9 @@ const Benefits: React.FC = () => {
       delay: "0.2s"
     },
     {
-      icon: UserPlus,
-      title: "Asesoría Especializada",
-      description: "Consultores expertos en salud te acompañan en todo el proceso para maximizar tus beneficios.",
+      icon: Sparkles,
+      title: "Siempre a la vanguardia.",
+      description: "Gracias a nuestros esquemas de arrendamiento, puedes acceder a equipos médicos con la tecnología más actualizada.",
       color: "purple",
       delay: "0.3s"
     },
@@ -68,7 +68,7 @@ const Benefits: React.FC = () => {
   };
 
   return (
-    <section id="beneficios" className="relative py-24 bg-gradient-to-b from-white to-slate-50/50">
+    <section id="ventajas" className="relative pt-24 pb-12 bg-gradient-to-b from-white to-slate-50/50">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
       
@@ -87,6 +87,10 @@ const Benefits: React.FC = () => {
           
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Más que un arrendamiento, una alianza estratégica para el crecimiento de tu práctica médica
+          </p>
+
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed mt-6">
+            Ofrecemos arrendamientos médicos sin garantías hipotecarias, con aprobación ágil y pagos mensuales deducibles. Permitiendo a los médicos obtener su equipo en días, no meses, sin descapitalizarse ni endeudarse a largo plazo.
           </p>
         </div>
         
@@ -133,24 +137,9 @@ const Benefits: React.FC = () => {
               <h3 className="font-heading text-2xl md:text-3xl font-bold text-slate-900 mb-4">
                 Compromiso con tu Éxito
               </h3>
-              <p className="text-slate-600 leading-relaxed mb-6">
-                Entendemos que cada decisión de inversión en equipo médico es crucial para tu práctica. 
-                Por eso te acompañamos desde la evaluación inicial hasta la implementación completa.
+              <p className="text-slate-600 leading-relaxed">
+                Asesoramos al médico, estructuramos pagos accesibles y nos encargamos de la parte operativa y administrativa del arrendamiento. Así el médico toma decisiones inteligentes y fiscalmente óptimas, sin complicarse y sin perder tiempo.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-sm font-medium text-slate-700">Seguimiento personalizado</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="text-sm font-medium text-slate-700">Soporte técnico incluido</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  <span className="text-sm font-medium text-slate-700">Garantía extendida</span>
-                </div>
-              </div>
             </div>
             
             <div className="grid grid-cols-2 gap-6">
@@ -159,16 +148,14 @@ const Benefits: React.FC = () => {
                 <div className="text-sm text-slate-600">Años de experiencia</div>
               </div>
               <div className="text-center bg-white rounded-2xl p-6 shadow-soft">
-                <div className="text-3xl font-bold text-green-600 mb-2">50+</div>
-                <div className="text-sm text-slate-600">Marcas disponibles</div>
-              </div>
-              <div className="text-center bg-white rounded-2xl p-6 shadow-soft">
-                <div className="text-3xl font-bold text-purple-600 mb-2">200+</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">200+</div>
                 <div className="text-sm text-slate-600">Clientes satisfechos</div>
               </div>
-              <div className="text-center bg-white rounded-2xl p-6 shadow-soft">
-                <div className="text-3xl font-bold text-indigo-600 mb-2">99%</div>
-                <div className="text-sm text-slate-600">Tasa de aprobación</div>
+              <div className="flex items-center justify-center text-center bg-white rounded-2xl p-6 shadow-soft">
+                <div className="text-base font-semibold text-slate-800">Trabajamos con la marca de tu preferencia</div>
+              </div>
+              <div className="flex items-center justify-center text-center bg-white rounded-2xl p-6 shadow-soft">
+                <div className="text-base font-semibold text-slate-800">Esquemas de arrendamiento personalizados</div>
               </div>
             </div>
           </div>

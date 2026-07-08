@@ -68,13 +68,13 @@ const Benefits: React.FC = () => {
   };
 
   return (
-    <section id="ventajas" className="relative pt-24 pb-12 bg-gradient-to-b from-white to-slate-50/50">
+    <section id="ventajas" className="relative py-16 md:py-20 bg-slate-50 border-t border-slate-200">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
       
       <div className="section-container relative">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full border border-blue-200 mb-6">
             <Shield className="w-4 h-4 text-blue-600" />
             <span className="text-sm font-medium text-blue-700">Nuestras Ventajas</span>

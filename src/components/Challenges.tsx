@@ -51,13 +51,13 @@ const Challenges: React.FC = () => {
   };
 
   return (
-    <section id="soluciones" className="relative py-24 bg-white">
+    <section id="soluciones" className="relative py-16 md:py-20 bg-white border-t border-slate-200">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
 
       <div className="section-container relative">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-16">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Los retos actuales en la{" "}
             <span className="text-gradient-primary">práctica médica</span>

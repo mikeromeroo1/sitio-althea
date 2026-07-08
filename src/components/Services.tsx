@@ -18,7 +18,7 @@ const equipos = [
 
 const Services: React.FC = () => {
   return (
-    <section id="servicios" className="relative py-24 bg-white">
+    <section id="servicios" className="relative py-16 md:py-20 bg-slate-50 border-t border-slate-200">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
 

@@ -45,7 +45,7 @@ const grupo = [
 
 const AboutUs: React.FC = () => {
   return (
-    <section id="nosotros" className="bg-white py-16">
+    <section id="nosotros" className="bg-white py-16 md:py-20 border-t border-slate-200">
       <div className="section-container">
         <div className="text-center mb-10 animate-fade-in">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-slate-900 mb-6">

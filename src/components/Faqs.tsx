@@ -43,7 +43,7 @@ const Faqs: React.FC = () => {
   ];
 
   return (
-    <section id="faqs" className="bg-white py-16">
+    <section id="faqs" className="bg-slate-50 py-16 md:py-20 border-t border-slate-200">
       <div className="section-container">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-semibold text-althea-800 mb-4">Preguntas Frecuentes</h2>

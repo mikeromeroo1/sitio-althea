@@ -7,11 +7,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const oficinas = [
-  "/equipo-1.png",
-  "/equipo-2.png",
-  "/equipo-3.png",
-];
+const oficinas = Array.from(
+  { length: 17 },
+  (_, i) => `/oficinas/AltheaOficina_${String(i + 1).padStart(2, "0")}.jpg`
+);
 
 const grupo = [
   {

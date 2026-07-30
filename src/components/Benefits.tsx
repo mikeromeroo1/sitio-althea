@@ -68,7 +68,7 @@ const Benefits: React.FC = () => {
   };
 
   return (
-    <section id="ventajas" className="relative py-16 md:py-20 bg-slate-50 border-t border-slate-200">
+    <section id="ventajas" className="relative py-16 md:py-20 bg-white border-t border-slate-200">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
       

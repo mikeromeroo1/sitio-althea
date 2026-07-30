@@ -34,20 +34,20 @@ const TarjetaEspecialidad: React.FC<{ especialidad: Especialidad }> = ({ especia
 
   return (
     // scroll-mt compensa el navbar fijo cuando se llega por ancla (#slug).
-    <section id={slug} className="scroll-mt-28">
+    <section id={slug} className="scroll-mt-32">
       <div className="bg-white rounded-3xl border border-slate-200 shadow-soft overflow-hidden h-full flex flex-col">
-        <div className="flex items-baseline justify-between gap-4 px-6 pt-6 pb-4">
-          <h2 className="font-heading text-xl md:text-2xl font-semibold text-slate-900">
+        <div className="flex items-baseline justify-between gap-3 px-4 sm:px-6 pt-5 sm:pt-6 pb-3 sm:pb-4">
+          <h2 className="font-heading text-lg sm:text-xl md:text-2xl font-semibold text-slate-900">
             {titulo}
           </h2>
           {imagenes.length > 1 && (
-            <span className="text-sm text-slate-500 tabular-nums shrink-0">
+            <span className="text-xs sm:text-sm text-slate-500 tabular-nums shrink-0">
               {actual + 1} / {imagenes.length}
             </span>
           )}
         </div>
 
-        <div className="px-6 pb-6 flex-grow">
+        <div className="px-4 sm:px-6 pb-5 sm:pb-6 flex-grow">
           {imagenes.length === 0 ? (
             // Estado vacío: evita un carrusel sin slides y deja claro que falta contenido.
             <div className="aspect-square rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 flex flex-col items-center justify-center gap-2 text-slate-400">
@@ -76,11 +76,11 @@ const TarjetaEspecialidad: React.FC<{ especialidad: Especialidad }> = ({ especia
                         className="w-full h-full object-contain transition-transform duration-500 group-hover/foto:scale-105"
                       />
 
-                      {/* Capa de hover con el CTA.
-                          - focus-within: quien navega con teclado también la ve.
-                          - hover:none: en táctil no existe hover, así que ahí
-                            queda visible siempre o el botón sería inalcanzable. */}
-                      <div className="absolute inset-0 flex items-center justify-center bg-slate-900/40 opacity-0 pointer-events-none transition-opacity duration-300 group-hover/foto:opacity-100 group-hover/foto:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto [@media(hover:none)]:opacity-100 [@media(hover:none)]:pointer-events-auto [@media(hover:none)]:bg-transparent">
+                      {/* Capa de hover con el CTA, solo en desktop: en móvil no
+                          hay hover y el botón tapaba la foto, así que ahí no se
+                          renderiza y queda el CTA del final de la página.
+                          focus-within la muestra a quien navega con teclado. */}
+                      <div className="hidden lg:flex absolute inset-0 items-center justify-center bg-slate-900/40 opacity-0 pointer-events-none transition-opacity duration-300 group-hover/foto:opacity-100 group-hover/foto:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto">
                         <Link to="/cotizacion">
                           <Button className="btn-primary group text-sm px-6 py-3 h-auto">
                             Cotiza Ahora
@@ -91,8 +91,8 @@ const TarjetaEspecialidad: React.FC<{ especialidad: Especialidad }> = ({ especia
 
                       {/* El nombre va superpuesto, no debajo: así el alto de la
                           tarjeta no salta al cambiar de slide. */}
-                      <div className="absolute bottom-0 left-0 right-0 flex justify-center px-4 pb-4">
-                        <span className="bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full border border-blue-200 shadow-soft text-sm font-semibold text-slate-700 text-center">
+                      <div className="absolute bottom-0 left-0 right-0 flex justify-center px-3 sm:px-4 pb-3 sm:pb-4">
+                        <span className="bg-white/90 backdrop-blur-sm px-3 sm:px-4 py-1.5 rounded-full border border-blue-200 shadow-soft text-xs sm:text-sm font-semibold text-slate-700 text-center">
                           {img.nombre}
                         </span>
                       </div>
@@ -126,27 +126,30 @@ const Equipos: React.FC = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      <main className="flex-grow bg-slate-50">
+      {/* El logo del navbar sobresale de su caja por los márgenes negativos y su
+          tinta baja hasta ~96px (móvil) / ~116px (desktop), más de lo que aporta
+          el padding de .section-container. Este pt evita que choque con el h1. */}
+      <main className="flex-grow bg-slate-50 pt-20 lg:pt-12">
         <div className="section-container">
           {/* Encabezado */}
-          <div className="text-center mb-10 animate-fade-in">
-            <h1 className="font-heading text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <div className="text-center mb-8 sm:mb-10 animate-fade-in">
+            <h1 className="font-heading text-4xl md:text-5xl font-bold text-slate-900 mb-3 sm:mb-4">
               Catálogo de <span className="text-gradient-primary">Equipos</span>
             </h1>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto">
               Arrendamos equipo médico profesional para cualquier especialidad. Explora por
               área y cotiza el equipo que necesitas.
             </p>
           </div>
 
           {/* Índice de especialidades */}
-          <nav aria-label="Especialidades" className="mb-12">
-            <ul className="flex flex-wrap justify-center gap-2">
+          <nav aria-label="Especialidades" className="mb-8 sm:mb-12">
+            <ul className="flex flex-wrap justify-center gap-1.5 sm:gap-2">
               {especialidades.map((esp) => (
                 <li key={esp.slug}>
                   <a
                     href={`#${esp.slug}`}
-                    className="inline-block bg-white px-4 py-2 rounded-full border border-slate-200 text-sm font-medium text-slate-700 hover:border-blue-300 hover:text-blue-600 transition-colors"
+                    className="inline-block bg-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-slate-200 text-xs sm:text-sm font-medium text-slate-700 hover:border-blue-300 hover:text-blue-600 transition-colors"
                   >
                     {esp.titulo}
                   </a>
@@ -156,7 +159,7 @@ const Equipos: React.FC = () => {
           </nav>
 
           {/* Carruseles por especialidad */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             {especialidades.map((esp) => (
               <TarjetaEspecialidad key={esp.slug} especialidad={esp} />
             ))}

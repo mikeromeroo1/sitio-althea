@@ -6,12 +6,17 @@ export const oficinas = APROBADAS.map(
   (n) => `/oficinas/AltheaOficina_${String(n).padStart(2, "0")}.webp`
 );
 
-/** Devuelve `cantidad` fotos de oficinas distintas, en orden aleatorio. */
-export function oficinasAleatorias(cantidad: number): string[] {
-  const pool = [...oficinas];
-  for (let i = pool.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [pool[i], pool[j]] = [pool[j], pool[i]];
-  }
-  return pool.slice(0, Math.min(cantidad, pool.length));
+/**
+ * Devuelve `cantidad` fotos para acompañar al hero.
+ *
+ * Antes esto sorteaba con Math.random en cada carga. Dejó de servir al prerenderizar
+ * la portada: el HTML se genera en el build y el navegador vuelve a ejecutar el
+ * componente al hidratar, así que servidor y cliente elegían fotos distintas y React
+ * encontraba un DOM que no coincidía con lo que esperaba. La selección tiene que ser
+ * estable para que el prerender y la hidratación produzcan lo mismo.
+ *
+ * Para cambiar qué fotos aparecen, reordena APROBADAS.
+ */
+export function oficinasDestacadas(cantidad: number): string[] {
+  return oficinas.slice(0, Math.min(cantidad, oficinas.length));
 }

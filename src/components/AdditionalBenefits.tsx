@@ -21,7 +21,7 @@ const benefits = [
 
 const AdditionalBenefits: React.FC = () => {
   return (
-    <section id="additional-benefits" className="py-16 md:py-20 bg-white border-t border-slate-200">
+    <section id="additional-benefits" className="py-16 md:py-20 bg-slate-50 border-t border-slate-200">
       <div className="section-container">
         <div className="text-center mb-12 md:mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-semibold text-primary mb-4">

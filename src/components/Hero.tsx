@@ -2,8 +2,39 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Shield, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import { oficinasAleatorias } from "@/lib/oficinas";
+
+const AUTOPLAY_MS = 5000;
 
 const Hero: React.FC = () => {
+  // Las dos fotos de oficinas se sortean una vez por carga, no en cada render.
+  const slides = React.useMemo(
+    () => [
+      { src: "/equipo-1.png", alt: "Equipo médico de alta tecnología - Althea Lease" },
+      ...oficinasAleatorias(2).map((src) => ({
+        src,
+        alt: "Oficinas de Althea Lease",
+      })),
+    ],
+    []
+  );
+
+  const [api, setApi] = React.useState<CarouselApi>();
+
+  React.useEffect(() => {
+    if (!api) return;
+    // Respetar a quien pidió menos movimiento en el sistema.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(() => api.scrollNext(), AUTOPLAY_MS);
+    return () => window.clearInterval(id);
+  }, [api]);
+
   return (
     <section id="inicio" className="hero-section relative bg-gradient-to-br from-blue-50 via-white to-blue-50/50 lg:bg-none">
       <div className="section-container w-full flex flex-col lg:flex-row items-center justify-between h-screen pt-24 lg:pt-20 pb-8">
@@ -135,15 +166,33 @@ const Hero: React.FC = () => {
           {/* Right Content - Image Section */}
           <div className="w-1/2 pl-6 xl:pl-8 relative z-10">
             <div className="relative animate-scale-in max-w-2xl mx-auto" style={{ animationDelay: "0.3s" }}>
-              {/* Main Image */}
+              {/* Main Image Carousel */}
               <div className="relative rounded-2xl overflow-hidden shadow-strong">
-                <img 
-                  src="/equipo-1.png" 
-                  alt="Equipo médico de alta tecnología - Althea Lease" 
-                  className="w-full h-[420px] xl:h-[480px] object-cover"
-                />
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                {/* Solo automático: watchDrag desactiva el arrastre y no hay
+                    flechas ni indicadores, así el usuario no navega a mano. */}
+                <Carousel
+                  opts={{ loop: true, watchDrag: false }}
+                  setApi={setApi}
+                  className="w-full"
+                >
+                  {/* ml-0 / pl-0 anulan el gap por defecto del carrusel: aquí la
+                      imagen va a sangre y cualquier margen se vería como una franja. */}
+                  <CarouselContent className="ml-0">
+                    {slides.map((slide) => (
+                      <CarouselItem key={slide.src} className="pl-0">
+                        <div className="relative">
+                          <img
+                            src={slide.src}
+                            alt={slide.alt}
+                            className="w-full h-[420px] xl:h-[480px] object-cover"
+                          />
+                          {/* Gradient Overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
               </div>
 
               {/* Floating Cards */}

@@ -1,12 +1,7 @@
 import React from 'react';
-import { Wrench, ShieldCheck, Truck, Brain } from 'lucide-react';
+import { ShieldCheck, Truck, Brain } from 'lucide-react';
 
 const benefits = [
-  {
-    icon: <Wrench className="w-8 h-8 mb-3 text-primary" />,
-    title: 'Smart Maintenance',
-    description: 'Recibe notificaciones para el mantenimiento oportuno de tu equipo.',
-  },
   {
     icon: <ShieldCheck className="w-8 h-8 mb-3 text-primary" />,
     title: 'Smart Insurance',
@@ -36,7 +31,7 @@ const AdditionalBenefits: React.FC = () => {
             Ofrecemos más que el arrendamiento de un equipo médico.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 animate-stagger">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 animate-stagger">
           {benefits.map((benefit, index) => (
             <div 
               key={index} 

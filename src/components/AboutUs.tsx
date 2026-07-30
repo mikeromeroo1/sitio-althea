@@ -6,27 +6,21 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
-const oficinas = Array.from(
-  { length: 17 },
-  (_, i) => `/oficinas/AltheaOficina_${String(i + 1).padStart(2, "0")}.jpg`
-);
+import { oficinas } from "@/lib/oficinas";
 
 const grupo = [
   {
     logo: "/logo-verde.png",
     logoClass: "h-32",
     icon: "/ventilator_transparent.png",
-    iconClass: "",
     description: "Arrendamiento de equipos y vehículos médicos.",
     url: "https://www.althealease.com/",
     alt: "Althea Lease",
   },
   {
-    logo: "/6k-logo.png",
+    logo: "/6k-logo-rojo.png",
     logoClass: "h-8",
-    icon: "/car_transparent.png",
-    iconClass: "scale-125",
+    icon: "/carro-moderno-recortado.png",
     description: "Arrendamiento de vehículos, flotillas y maquinaria.",
     url: "https://6kleasing.com/",
     alt: "6K Leasing",
@@ -35,7 +29,6 @@ const grupo = [
     logo: "/kinesis-logo.png",
     logoClass: "h-10",
     icon: "/hands_transparent.png",
-    iconClass: "",
     description: "Créditos simples y créditos T+N multidivisa.",
     url: "https://www.kinesiscatalitica.com/",
     alt: "Kinesis FX",
@@ -116,7 +109,11 @@ const AboutUs: React.FC = () => {
                     className={`${empresa.logoClass} object-contain`}
                   />
                 </div>
-                <div className={`h-32 w-32 flex items-center justify-center mb-6 ${empresa.iconClass}`}>
+                {/* Caja normalizada por altura, con tope de ancho: el arte apaisado
+                    (el carro, 3:1) crece más que en una caja cuadrada pero sin
+                    dominar la tarjeta. El tope no afecta a los iconos verticales,
+                    que quedan limitados por la altura muy por debajo de los 15rem. */}
+                <div className="h-32 w-full max-w-[15rem] flex items-center justify-center mb-6">
                   <img
                     src={empresa.icon}
                     alt=""

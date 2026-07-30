@@ -1,4 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* Fuentes auto-hospedadas. Antes esto era un @import a fonts.googleapis.com, que
+   creaba una cadena en serie: HTML -> CSS de la app -> CSS de Google -> archivos
+   de fuente, con dos conexiones a terceros. Cada salto costaba medio segundo en
+   móvil throttleado. Ahora Vite las empaqueta en el mismo dominio y no hay cadena.
+   Solo el subconjunto latino y los pesos que el código realmente usa: el navegador
+   descarga únicamente los que aparecen en la página. */
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/latin-600.css";
+@import "@fontsource/inter/latin-700.css";
+@import "@fontsource/poppins/latin-400.css";
+@import "@fontsource/poppins/latin-500.css";
+@import "@fontsource/poppins/latin-600.css";
+@import "@fontsource/poppins/latin-700.css";
 
 @tailwind base;
 @tailwind components;

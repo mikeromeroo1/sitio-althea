@@ -8,16 +8,15 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { oficinasAleatorias } from "@/lib/oficinas";
+import { oficinasDestacadas } from "@/lib/oficinas";
 
 const AUTOPLAY_MS = 5000;
 
 const Hero: React.FC = () => {
-  // Las dos fotos de oficinas se sortean una vez por carga, no en cada render.
   const slides = React.useMemo(
     () => [
       { src: "/equipo-1.webp", alt: "Equipo médico de alta tecnología - Althea Lease" },
-      ...oficinasAleatorias(2).map((src) => ({
+      ...oficinasDestacadas(2).map((src) => ({
         src,
         alt: "Oficinas de Althea Lease",
       })),

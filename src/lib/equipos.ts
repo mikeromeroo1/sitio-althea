@@ -15,9 +15,11 @@ export type Especialidad = {
  * Catálogo por especialidad. Cada equipo es [nombreDeArchivoSinExtensión, nombreVisible].
  *
  * Para agregar equipo:
- *   1. Sube el .jpg a public/equipos/<slug>/ con nombre en minúsculas, sin tildes
+ *   1. Sube la foto a public/equipos/<slug>/ con nombre en minúsculas, sin tildes
  *      y separado por guiones (mismo criterio que los ya existentes).
  *   2. Agrega el par aquí. La ruta se arma sola con el slug.
+ *   3. Corre `npm run optimizar-imagenes`, que la convierte a .webp (la
+ *      extensión que espera este archivo) y la reduce al tamaño en que se ve.
  *
  * Una especialidad con lista vacía se muestra como "próximamente", sin romper nada.
  */
@@ -115,7 +117,7 @@ export const especialidades: Especialidad[] = CATALOGO.map(({ slug, titulo, equi
   slug,
   titulo,
   imagenes: equipos.map(([archivo, nombre]) => ({
-    src: `/equipos/${slug}/${archivo}.jpg`,
+    src: `/equipos/${slug}/${archivo}.webp`,
     nombre,
   })),
 }));

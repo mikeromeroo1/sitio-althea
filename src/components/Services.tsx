@@ -11,9 +11,9 @@ import {
 } from "@/components/ui/carousel";
 
 const equipos = [
-  { img: "/equipo-1.png", especialidad: "Ultrasonido" },
-  { img: "/equipo-2.png", especialidad: "Imagenología" },
-  { img: "/equipo-3.png", especialidad: "Consulta general" },
+  { img: "/equipo-1.webp", especialidad: "Ultrasonido" },
+  { img: "/equipo-2.webp", especialidad: "Imagenología" },
+  { img: "/equipo-3.webp", especialidad: "Consulta general" },
 ];
 
 const Services: React.FC = () => {
@@ -58,6 +58,7 @@ const Services: React.FC = () => {
                           <img
                             src={equipo.img}
                             alt={`Equipo médico - ${equipo.especialidad}`}
+                            loading="lazy"
                             className="w-full h-64 md:h-80 object-cover"
                           />
                           {/* Etiqueta de especialidad - parte superior central */}
@@ -97,8 +98,9 @@ const Services: React.FC = () => {
               <div>
                 <div className="relative rounded-2xl overflow-hidden shadow-medium">
                   <img
-                    src="/ambulancia.png"
+                    src="/ambulancia.webp"
                     alt="Unidad médica móvil - ambulancia"
+                    loading="lazy"
                     className="w-full h-64 md:h-80 object-cover"
                   />
                 </div>

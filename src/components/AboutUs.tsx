@@ -10,25 +10,25 @@ import { oficinas } from "@/lib/oficinas";
 
 const grupo = [
   {
-    logo: "/logo-verde.png",
+    logo: "/logo-verde.webp",
     logoClass: "h-32",
-    icon: "/ventilator_transparent.png",
+    icon: "/ventilator_transparent.webp",
     description: "Arrendamiento de equipos y vehículos médicos.",
     url: "https://www.althealease.com/",
     alt: "Althea Lease",
   },
   {
-    logo: "/6k-logo-rojo.png",
+    logo: "/6k-logo-rojo.webp",
     logoClass: "h-8",
-    icon: "/carro-moderno-recortado.png",
+    icon: "/carro-moderno-recortado.webp",
     description: "Arrendamiento de vehículos, flotillas y maquinaria.",
     url: "https://6kleasing.com/",
     alt: "6K Leasing",
   },
   {
-    logo: "/kinesis-logo.png",
+    logo: "/kinesis-logo.webp",
     logoClass: "h-10",
-    icon: "/hands_transparent.png",
+    icon: "/hands_transparent.webp",
     description: "Créditos simples y créditos T+N multidivisa.",
     url: "https://www.kinesiscatalitica.com/",
     alt: "Kinesis FX",
@@ -68,6 +68,7 @@ const AboutUs: React.FC = () => {
                       <img
                         src={img}
                         alt={`Oficinas de Althea Lease ${index + 1}`}
+                        loading="lazy"
                         className="rounded-lg shadow-lg w-full h-64 md:h-72 object-cover"
                       />
                     </CarouselItem>

@@ -3,7 +3,7 @@
 const APROBADAS = [2, 4, 8, 10, 11, 13];
 
 export const oficinas = APROBADAS.map(
-  (n) => `/oficinas/AltheaOficina_${String(n).padStart(2, "0")}.jpg`
+  (n) => `/oficinas/AltheaOficina_${String(n).padStart(2, "0")}.webp`
 );
 
 /** Devuelve `cantidad` fotos de oficinas distintas, en orden aleatorio. */

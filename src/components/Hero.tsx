@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
   // Las dos fotos de oficinas se sortean una vez por carga, no en cada render.
   const slides = React.useMemo(
     () => [
-      { src: "/equipo-1.png", alt: "Equipo médico de alta tecnología - Althea Lease" },
+      { src: "/equipo-1.webp", alt: "Equipo médico de alta tecnología - Althea Lease" },
       ...oficinasAleatorias(2).map((src) => ({
         src,
         alt: "Oficinas de Althea Lease",

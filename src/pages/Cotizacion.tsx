@@ -75,11 +75,14 @@ const Cotizacion = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <main className="flex-grow bg-gray-50">
+      {/* El logo del navbar sobresale de su caja por los márgenes negativos y su
+          tinta baja hasta ~96px (móvil) / ~116px (desktop), más de lo que aporta
+          el padding de .section-container. Este pt evita que choque con el h1. */}
+      <main className="flex-grow bg-gray-50 pt-20 lg:pt-12">
         <div className="section-container max-w-5xl mx-auto">
           <div className="mb-10 text-center animate-fade-in">
             <h1 className="text-3xl md:text-4xl font-bold mb-3 text-althea-700">Solicita tu Cotización</h1>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
               Completa el siguiente formulario y recibe una propuesta personalizada para tu equipo médico
             </p>
           </div>
@@ -164,7 +167,7 @@ const Cotizacion = () => {
                   </div>
                 </form>
               </CardContent>
-              <CardFooter className="border-t flex justify-between bg-gray-50 text-sm text-gray-500">
+              <CardFooter className="border-t flex flex-col gap-1 text-center sm:flex-row sm:justify-between sm:text-left bg-gray-50 text-sm text-gray-500">
                 <p>Todos tus datos están seguros</p>
                 <p>Respuesta en 24-48 horas hábiles</p>
               </CardFooter>

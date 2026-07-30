@@ -40,9 +40,9 @@ const Services: React.FC = () => {
                 <h3 className="text-2xl md:text-3xl font-normal text-slate-700 mb-6 leading-snug">
                   Arrendamiento de equipos médicos profesionales para cualquier especialidad.
                 </h3>
-                <Link to="/cotizacion">
+                <Link to="/equipos">
                   <Button className="btn-primary group text-sm px-6 py-3 h-auto">
-                    Cotiza Ahora
+                    Ver Equipos
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
